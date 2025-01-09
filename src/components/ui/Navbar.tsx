@@ -207,31 +207,35 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navigation with smooth transitions */}
-      <div
-        id="mobile-menu"
-        className={`
+        <div
+          id="mobile-menu"
+          className={`
           transform transition-all duration-300 ease-in-out z-50
-          ${
-            isMenuOpen
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-10 opacity-0 pointer-events-none"
-          }
-          md:hidden
-        `}
-      >
-        <nav className="absolute top-full left-0 right-0 bg-black/95 border-t border-[#ffffff1a] overflow-hidden">
-          {navButtonData.map((item) => (
+          ${isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}
+          md:hidden fixed top-0 left-0 w-full bg-black/95 h-full flex flex-col
+          `}
+        >
+          <button
+          className="p-4 self-end mr-4 hover:bg-white/10 rounded-lg transition-colors duration-300"
+          onClick={() => setIsMenuOpen(false)}
+          aria-label="Close menu"
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+          <nav className="flex-1 flex flex-col items-center justify-center space-y-4">
+            {navButtonData.map((item) => (
             <NavButton
               key={item.id}
               href={item.href}
               icon={item.icon}
-              className="w-full justify-start rounded-none py-4 border-none hover:bg-white/5"
+              className="w-full text-center rounded-none py-4 border-none hover:bg-white/5"
             >
               {item.name}
             </NavButton>
-          ))}
-        </nav>
-      </div>
+            ))}
+          </nav>
+        </div>
+
     </header>
   );
 }

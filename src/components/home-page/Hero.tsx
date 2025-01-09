@@ -100,24 +100,25 @@ export default function Hero() {
 			<div className="block lg:hidden max-w-[400px] z-50">
 				<GradientBorderButton>Book a Call</GradientBorderButton>
 			</div>
-			<div className="my-10 lg:mb-28 flex p-5 md:p-0 flex-wrap md:flex-nowrap items-center justify-between w-full gap-6">
-				{marqueeImages.map((image, index) => (
-					<div
-					key={image.id}
-					className={`relative w-[126.535px] h-[25.307px] lg:w-24 lg:h-24 ${
-						index === 0 || index === marqueeImages.length - 1 ? "" : ""
-					}`}
-					>
-						<Image
-							src={image.src}
-							alt="partners"
-							fill
-							className="object-contain"
-							sizes={`${image.width}px, ${image.height}px`}
-						/>
-					</div>
-				))}
+			<div className="my-10 lg:mb-28 flex flex-wrap items-center justify-between w-full gap-6">
+				<div className="grid grid-cols-2 sm:grid-cols-3 lg:flex items-center justify-between gap-6 w-full">
+					{marqueeImages.map((image) => (
+						<div
+							key={image.id}
+							className="relative w-[126.535px] h-[25.307px] lg:w-24 lg:h-24"
+						>
+							<Image
+								src={image.src}
+								alt="partners"
+								fill
+								className="object-contain"
+								sizes={`${image.width}px, ${image.height}px`}
+							/>
+						</div>
+					))}
+				</div>
 			</div>
+
 
 
 			<div className="flex flex-col lg:flex-row items-center justify-center h-full w-full gap-2">
